@@ -10,6 +10,7 @@ namespace AspNetCoreWebServiceTest.Controllers
         {
             HelloController controller = new HelloController();
             var response = controller.Get().Value as Response;
+            var content = response.Content.ReadAsStringAsync().Result;
             Assert.Equal("Hello World!", content);
         }
 
