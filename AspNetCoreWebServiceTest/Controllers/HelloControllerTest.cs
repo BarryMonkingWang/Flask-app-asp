@@ -6,11 +6,12 @@ namespace AspNetCoreWebServiceTest.Controllers
     public class HelloControllerTest
     {
         [Fact]
-        public void NoInputParamGetResponseTest()
+        public void IndexTest()
         {
-            HelloController controller = new HelloController();
-            var response = controller.Get().Value as Response;
-            Assert.Equal("Hello World!!!", response.output);
+            HomeController controller = new HomeController();
+            ViewResult result = (ViewResult) controller.Index();
+            Assert.Single(result.ViewData);
+            Assert.Equal("You just created a ASP.Net Core web application!", result.ViewData["Message"]);
         }
 
         [Theory]
